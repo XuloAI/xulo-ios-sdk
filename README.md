@@ -18,7 +18,7 @@ In Xcode, choose File → Add Package Dependencies and enter:
 https://github.com/XuloAI/xulo-ios-sdk
 ```
 
-Use version 0.1.0, up to the next major version.
+Use version 0.1.1, up to the next major version.
 
 Add the products to these targets:
 
@@ -42,7 +42,7 @@ Xulo.logLevel = .verbose
 Xulo.start(apiKey: "YOUR_API_KEY")
 ```
 
-`start` reads the app’s bundle id and calls `https://api.xulo.io`. Pass `bundleId` only when that id is not the one registered in the panel.
+`start` reads the app’s bundle id and calls `https://api.xulo.io`. Pass `bundleId` only when that id is not the one registered in the panel. If notification permission is already authorized or provisional, `start` registers for a token and does not ask again.
 
 `logLevel` is `.off` unless you set it. `.verbose` prints the trace in Xcode. `.error` prints failures only. A live build leaves it off. The log never includes the API key or the device token. The extension reads the same level from the app group after `start`.
 
@@ -51,8 +51,11 @@ Xulo.start(apiKey: "YOUR_API_KEY")
 Ask for permission, then pass Apple’s token through. Forward the tap as well.
 
 ```swift
-Xulo.requestPushPermission()
+Xulo.requestPushPermission { granted in
+}
 ```
+
+The completion is `true` when the person allows notifications. A grant also registers for the token. The call without a completion still works.
 
 ```swift
 func application(
@@ -110,11 +113,12 @@ Each extension’s bundle id is the app id plus a suffix. Example: `app.example.
 ```swift
 await Xulo.login(externalId: "USER_ID")
 Xulo.setTags(["plan": "pro"])
+Xulo.addTag(key: "summary", value: "1")
 await Xulo.purchase(amount: 1500, currency: "USD", orderId: "ORDER_ID")
 await Xulo.logout()
 ```
 
-`login` takes the id your app already uses, as text. A blank value does not log the device out. `setTags` writes tags on the current person. `logout` keeps the subscription id and the push token, and starts a new anonymous person.
+`login` takes the id your app already uses, as text. A blank value does not log the device out. `setTags` replaces the tags this install knows. `addTag` writes one key and keeps the others. `"0"` is a value, not a delete. `logout` keeps the subscription id and the push token, and starts a new anonymous person.
 
 `amount` is in minor units. `1500` with `USD` is $15.00. Sending the same order id again replaces that order. A refund is the same order id with the amount that remains.
 
@@ -130,4 +134,4 @@ The card in the panel has to be approved, and its trigger has to match that name
 
 ## Version
 
-`Xulo.sdkVersion` is `"0.1.0"`.
+`Xulo.sdkVersion` is `"0.1.1"`.
