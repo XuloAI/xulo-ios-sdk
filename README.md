@@ -38,10 +38,13 @@ Create one App Group and add it to the app and both extensions. On each of those
 ```swift
 import Xulo
 
+Xulo.logLevel = .verbose
 Xulo.start(apiKey: "YOUR_API_KEY")
 ```
 
 `start` reads the app’s bundle id and calls `https://api.xulo.io`. Pass `bundleId` only when that id is not the one registered in the panel.
+
+`logLevel` is `.off` unless you set it. `.verbose` prints the trace in Xcode. `.error` prints failures only. A live build leaves it off. The log never includes the API key or the device token. The extension reads the same level from the app group after `start`.
 
 ## Push
 
