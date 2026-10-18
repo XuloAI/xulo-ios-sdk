@@ -18,7 +18,7 @@ In Xcode, choose File → Add Package Dependencies and enter:
 https://github.com/XuloAI/xulo-ios-sdk
 ```
 
-Use version 0.1.3, up to the next major version.
+Use version 0.1.4, up to the next major version.
 
 Add the products to these targets:
 
@@ -134,4 +134,4 @@ The card in the panel has to be approved, and its trigger has to match that name
 
 ## Version
 
-`Xulo.sdkVersion` is `"0.1.3"`.
+`Xulo.sdkVersion` is `"0.1.4"`.
