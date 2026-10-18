@@ -13,13 +13,13 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "Xulo",
-            url: "https://github.com/XuloAI/xulo-ios-sdk/releases/download/0.1.1/Xulo.xcframework.zip",
-            checksum: "c34c9c6c967e4ab6a8eed40e7df4cecdde4242526a0a405b44b2e982a348fc67"
+            url: "https://github.com/XuloAI/xulo-ios-sdk/releases/download/0.1.2/Xulo.xcframework.zip",
+            checksum: "2871b810fb97bccaf8209a1f1b6fb9e76f13305a68c2aee57487372bdd7f1037"
         ),
         .binaryTarget(
             name: "XuloExtension",
-            url: "https://github.com/XuloAI/xulo-ios-sdk/releases/download/0.1.1/XuloExtension.xcframework.zip",
-            checksum: "749ff24c079e09ca4d8e1f3f7dffd959b0ec1a9ff8e4aae62f525b2549708ea8"
+            url: "https://github.com/XuloAI/xulo-ios-sdk/releases/download/0.1.2/XuloExtension.xcframework.zip",
+            checksum: "ab0631e07dc86fbbec9ff7cf385ba18d18fbb4d341a7285b7615b7fdddd22128"
         ),
     ]
 )
