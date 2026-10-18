@@ -1,3 +1,4 @@
 *.xcframework
 *.xcframework.zip
+.build/
 .DS_Store
