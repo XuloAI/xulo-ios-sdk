@@ -18,7 +18,7 @@ In Xcode, choose File → Add Package Dependencies and enter:
 https://github.com/XuloAI/xulo-ios-sdk
 ```
 
-Use version 0.1.5, up to the next major version.
+Use version 0.1.6, up to the next major version.
 
 Add the products to these targets:
 
@@ -42,7 +42,7 @@ Xulo.logLevel = .verbose
 Xulo.start(appId: "YOUR_APP_ID")
 ```
 
-`appId` is the App ID from Keys & IDs. It is not a secret and it cannot send. `start` reads the app’s bundle id and calls `https://api.xulo.io`. Pass `bundleId` only when that id is not the one registered in the panel. If the App ID is empty, `start` does not register. If notification permission is already authorized or provisional, `start` registers for a token and does not ask again.
+`appId` is the App ID from Keys & IDs. It is not a secret and it cannot send. `start` calls `https://api.xulo.io` and the App ID alone picks the app. The old `bundleId:` argument still compiles and is ignored. If the App ID is empty, `start` does not register. If notification permission is already authorized or provisional, `start` registers for a token and does not ask again.
 
 `logLevel` is `.off` unless you set it. `.verbose` prints the trace in Xcode. `.error` prints failures only. A live build leaves it off. The log never includes the device token. The extension reads the same level from the app group after `start`.
 
@@ -134,4 +134,4 @@ The card in the panel has to be approved, and its trigger has to match that name
 
 ## Version
 
-`Xulo.sdkVersion` is `"0.1.5"`.
+`Xulo.sdkVersion` is `"0.1.6"`.
